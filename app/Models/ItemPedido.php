@@ -29,4 +29,10 @@ class ItemPedido extends Model
     {
         return $this->belongsTo(Cardapio::class);
     }
+
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class);
+    }
+
 }
