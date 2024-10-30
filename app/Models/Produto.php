@@ -17,6 +17,7 @@ class Produto extends Model
         'quantidade',
         'valor',
         'sub_categoria_id',
+        'foto',
     ];
     public function itensPedido()
     {
