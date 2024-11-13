@@ -13,26 +13,18 @@ class ItemPedido extends Model
 
     protected $fillable = [
         'pedido_id',
-        'cardapio_id',
+        'produto_id',
         'quantidade',
         'preco',
     ];
 
- 
     public function pedido()
     {
         return $this->belongsTo(Pedido::class);
-    }
-
-
-    public function cardapio()
-    {
-        return $this->belongsTo(Cardapio::class);
     }
 
     public function produto()
     {
         return $this->belongsTo(Produto::class);
     }
-
 }

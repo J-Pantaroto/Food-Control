@@ -15,8 +15,10 @@ class Produto extends Model
         'nome',
         'descricao',
         'quantidade',
-        'valor',
-        'sub_categoria_id',
+        'preco',
+        'subcategoria_id',
+        'categoria_id',
+        'desconto',
         'foto',
     ];
     public function itensPedido()
@@ -27,8 +29,13 @@ class Produto extends Model
     {
         return $this->hasOne(Cardapio::class);
     }
-    public function subCategoria()
+    public function subcategoria()
     {
-        return $this->belongsTo(SubCategoria::class);
+        return $this->belongsTo(SubCategoria::class, 'subcategoria_id');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
     }
 }

@@ -8,27 +8,48 @@ class CategoriaController extends Controller
 {
     public function index()
     {
-        // Recupera todos os produtos
         $categorias = Categoria::all();
-        return view('home', compact('categorias'));
+        return view('categorias.index', compact('categorias'));
     }
 
     public function create()
     {
-        $categorias = Categoria::all(); // Recupera todas as categorias
-        return view('categorias.create', compact('categorias'));
+        return view('categorias.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:30',
-        ]);
-
-        $categoria = new Categoria();
-        $categoria->nome = $request->nome;
-        $categoria->save();
-        return redirect()->route('home')->with('success', 'Categoria cadastrada com sucesso!');
-
+        $request->validate(['nome' => 'required']);
+        Categoria::create($request->all());
+        return redirect()->route('categoria.index')->with('success', 'Categoria criada com sucesso!');
     }
+
+    public function edit($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+        return view('categorias.edit', compact('categoria'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate(['nome' => 'required']);
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($request->all());
+        return redirect()->route('categoria.index')->with('success', 'Categoria atualizada com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+        return redirect()->route('categoria.index')->with('success', 'Categoria excluída com sucesso!');
+    }
+
+    public function show($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+        return view('categorias.show', compact('categoria'));
+    }
+
+
 }

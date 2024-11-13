@@ -10,29 +10,56 @@ class SubCategoriaController extends Controller
 {
     public function index()
     {
-        $subCategorias = SubCategoria::all();
-        $categorias = Categoria::all();
-        return view('home', compact('subCategorias', 'categorias'));
+        $subcategorias = SubCategoria::with('categoria')->get();
+        return view('subcategorias.index', compact('subcategorias'));
     }
 
     public function create()
     {
-        $categorias = Categoria::all(); // Recupera todas as categorias
-        //$subCategorias = SubCategoria::all(); // Recupera todas as Subcategorias
-        return view('sub-categorias.create', compact('categorias'));
+        $categorias = Categoria::all(); // Para popular o dropdown de categorias
+        return view('subcategorias.create', compact('categorias'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required|string|max:30',
             'categoria_id' => 'required|exists:categorias,id',
+            'nome' => 'required|string|max:255',
         ]);
 
-        $subCategoria = new SubCategoria();
-        $subCategoria->nome = $request->nome;
-        $subCategoria->categoria_id = $request->categoria_id;
-        $subCategoria->save();
-        return redirect()->route('home')->with('success', 'SubCategoria cadastrada com sucesso!');
+        SubCategoria::create($request->all());
+        return redirect()->route('subcategoria.index')->with('success', 'SubCategoria criada com sucesso!');
+    }
+
+    public function show($id)
+    {
+        $subcategoria = SubCategoria::with('categoria')->findOrFail($id);
+        return view('subcategorias.show', compact('subcategoria'));
+    }
+
+    public function edit($id)
+    {
+        $subcategoria = SubCategoria::findOrFail($id);
+        $categorias = Categoria::all(); // Para popular o dropdown de categorias
+        return view('subcategorias.edit', compact('subcategoria', 'categorias'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'categoria_id' => 'required|exists:categorias,id',
+            'nome' => 'required|string|max:255',
+        ]);
+
+        $subcategoria = SubCategoria::findOrFail($id);
+        $subcategoria->update($request->all());
+        return redirect()->route('subcategoria.index')->with('success', 'SubCategoria atualizada com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $subcategoria = SubCategoria::findOrFail($id);
+        $subcategoria->delete();
+        return redirect()->route('subcategoria.index')->with('success', 'SubCategoria excluída com sucesso!');
     }
 }

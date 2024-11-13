@@ -11,7 +11,7 @@ class SubCategoria extends Model
 
     protected $table = 'subcategorias';
 
-    protected $filable = [
+    protected $fillable = [
         'categoria_id',
         'nome',
     ];
@@ -21,7 +21,7 @@ class SubCategoria extends Model
     }
     public function produtos()
     {
-        return $this->hasMany(Produto::class);
+        return $this->hasMany(Produto::class, 'subcategoria_id');
     }
 
 }
