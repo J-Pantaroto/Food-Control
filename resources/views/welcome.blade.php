@@ -6,7 +6,6 @@
 <div class="container">
     <h1 class="mb-4 text-center">Cardápio</h1>
 
-    <!-- Navegação de Grupos -->
     @if($grupos && $grupos->isNotEmpty())
         <div class="botao-cardapio-rolagem mb-4" id="scroll">
             <ul class="nav nav-pills" role="tablist">
@@ -20,7 +19,6 @@
             </ul>
         </div>
 
-        <!-- Conteúdo do Cardápio -->
         <div class="tab-content">
             @foreach($grupos as $grupo)
                 <div class="tab-pane fade" id="grupo-{{ $grupo->id }}" role="tabpanel">
@@ -52,7 +50,6 @@
         <p>Nenhum grupo ou subgrupo disponível no momento.</p>
     @endif
 
-    <!-- Seção de Ofertas -->
     <div class="ofertas-header mt-5">
         <h2>Ofertas</h2>
     </div>
