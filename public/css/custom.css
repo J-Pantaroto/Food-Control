@@ -1,0 +1,92 @@
+/* Estilo geral do corpo */
+body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+h1, h2, h3 {
+    color: #ffffff;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* Navegação */
+.nav-pills .nav-link {
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #f5a623;
+    color: #1e1e1e;
+    border-radius: 20px;
+}
+
+/* Estilo dos botões do cardápio */
+.botao-cardapio-rolagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.botao-cardapio-rolagem .nav-link {
+    font-size: 1.1em;
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+.botao-cardapio-rolagem .nav-link.active {
+    background-color: #f5a623;
+    color: #000000;
+}
+
+/* Cardápio */
+.card {
+    background-color: #2c2c2c;
+    border: none;
+    color: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    padding: 10px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 1.1em;
+    margin-bottom: 0;
+}
+
+.card .preco-prato-main-destaque {
+    color: #f53d3d;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.ofertas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #f5a623;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.text-muted {
+    color: #7e7e7e !important;
+}
