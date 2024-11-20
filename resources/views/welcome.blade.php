@@ -6,6 +6,7 @@
 
         <title>Food Control</title>
 
+<<<<<<< Updated upstream
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -39,3 +40,46 @@
         </div>
     </body>
 </html>
+=======
+@section('content')
+<div class="container-fluid d-flex">
+    <!-- Menu de Categorias -->
+    <aside class="menu-categorias">
+        <nav>
+            <ul class="list-unstyled">
+                @foreach($grupos as $grupo)
+                    <li>
+                        <a href="#grupo-{{ $grupo->id }}" class="btn btn-link">{{ $grupo->nome }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo do Cardápio -->
+    <main class="conteudo-cardapio flex-grow-1">
+        @if($grupos && $grupos->isNotEmpty())
+            @foreach($grupos as $grupo)
+                <section id="grupo-{{ $grupo->id }}" class="mb-5">
+                    <h2 class="mb-3">{{ $grupo->nome }}</h2>
+                    @if($grupo->subcategorias && $grupo->subcategorias->isNotEmpty())
+                        @foreach($grupo->subcategorias as $subgrupo)
+                            <h3 class="mt-4">{{ $subgrupo->nome }}</h3>
+                            <div class="row gx-4 gy-4">
+                                @foreach($subgrupo->produtos as $produto)
+                                    @include('partials.card-produto', ['produto' => $produto])
+                                @endforeach
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-muted">Nenhuma subcategoria disponível.</p>
+                    @endif
+                </section>
+            @endforeach
+        @else
+            <p class="text-muted">Nenhum grupo disponível no momento.</p>
+        @endif
+    </main>
+</div>
+@endsection
+>>>>>>> Stashed changes
