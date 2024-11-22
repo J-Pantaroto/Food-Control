@@ -1,7 +1,7 @@
-## Configuração do Projeto - Logs ##
-- `composer require laravel/breeze --dev`
-- `php artisan breeze:install`
-- `npm install && npm run dev`
-- `php artisan migrate`
-- `npm install -D tailwindcss postcss autoprefixer`
-- `npx tailwindcss init -p`
+## Participantes do projeto
+- `Jhonatan de Oliveira Pantaroto (802.409)`
+- `Kelvyn Luiz Wolff (802.413)`
+- `Rodrigo Lodi Micali (802.428)`
+- `Lucas Ribeiro Dal Vesco (802.422)`
+## Documentação
+- `Toda a documentação do projeto se encontra dentro da pasta Documentação.`
