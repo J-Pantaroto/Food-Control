@@ -22,6 +22,13 @@ class ProdutoController extends Controller
         return view('produtos.create', compact('categorias', 'subcategorias'));
     }
 
+    public function getPreco($id)
+    {
+        $produto = Produto::findOrFail($id);
+        return response()->json(['preco' => $produto->preco]);
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([

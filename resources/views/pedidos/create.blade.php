@@ -26,12 +26,13 @@
             <div class="item-pedido mb-3 row">
                 <div class="col-md-5">
                     <label for="produto_id" class="form-label">Produto</label>
-                    <select class="form-control" name="itens[0][produto_id]" required>
+                    <select class="form-control" name="itens[0][produto_id]" onchange="updatePreco(this)" required>
                         <option value="">Selecione um Produto</option>
                         @foreach($produtos as $produto)
                             <option value="{{ $produto->id }}">{{ $produto->nome }}</option>
                         @endforeach
                     </select>
+
                 </div>
                 <div class="col-md-3">
                     <label for="quantidade" class="form-label">Quantidade</label>
@@ -90,5 +91,24 @@
         button.closest('.item-pedido').remove();
     }
 </script>
+
+<script>
+    function updatePreco(selectElement) {
+        const produtoId = selectElement.value;
+        const precoInput = selectElement.closest('.item-pedido').querySelector('input[name$="[preco]"]');
+
+        if (produtoId) {
+            fetch(`/produto/${produtoId}/preco`)
+                .then(response => response.json())
+                .then(data => {
+                    precoInput.value = data.preco;
+                })
+                .catch(error => console.error('Erro ao buscar o preço:', error));
+        } else {
+            precoInput.value = '';
+        }
+    }
+</script>
+
 </body>
 </html>

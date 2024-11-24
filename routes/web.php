@@ -24,9 +24,9 @@ use App\Models\Categoria;
 
 Route::get('/', [MenuController::class, 'index'])->name('welcome');
 
-/*Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');*/
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('categoria', CategoriaController::class);
     Route::resource('subcategoria', SubCategoriaController::class);
+    Route::get('/produto/{id}/preco', [ProdutoController::class, 'getPreco'])->name('produtos.preco');
     Route::resource('produto', ProdutoController::class);
     Route::resource('pedido', PedidoController::class);
 

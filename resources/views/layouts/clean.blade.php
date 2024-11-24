@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
 </head>
-<body>
+<body class="bg-light">
     @yield('content')
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

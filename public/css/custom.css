@@ -1,5 +1,5 @@
 body {
-    background-color: #f7f8fc;
+    background-color: #f8f9fa;
     color: #111827;
     font-family: Arial, sans-serif;
 }
@@ -99,3 +99,34 @@ h3 {
 .text-muted {
     color: #6b7280 !important;
 }
+
+/* Menu lateral */
+.menu-lateral {
+    background-color: #343a40; /* Azul escuro */
+    color: #ffffff; /* Fonte branca */
+}
+
+/* Links do menu lateral */
+.menu-lateral .nav-link {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 0; /* Remove bordas arredondadas */
+    border-bottom: 1px solid #495057; /* Linha abaixo do botão */
+    transition: all 0.3s ease;
+}
+
+.menu-lateral .nav-link:last-child {
+    border-bottom: none; /* Remove a linha do último botão */
+}
+
+.menu-lateral .nav-link:hover {
+    background-color: #495057; /* Cor de hover */
+    color: #ffffff;
+}
+
+.menu-lateral .nav-link.active {
+    background-color: #0d6efd; /* Cor de botão ativo */
+    font-weight: bold;
+    border-bottom: 2px solid #0d6efd; /* Realce na linha do botão ativo */
+}
+
